@@ -1,0 +1,25 @@
+{
+	"pages": [{
+			"path": "pages/news/news-page",
+			"style": {
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/detail/detail",
+			"style": {
+				// "app-plus": {
+				// 	"titleNView": {
+				// 		"type": "float"
+				// 	}
+				// }
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "我的奇遇记",
+		"navigationBarBackgroundColor": "#2F85FC",
+		"backgroundColor": "#FFFFFF"
+	}
+}
