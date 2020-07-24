@@ -70,7 +70,7 @@
 					this.status = 'loading';
 				}
 				uni.request({
-					url: 'http://192.168.3.7:3030/api/adventures',
+					url: 'https://adventures.jicu.vip/api/adventures',
 					data: this.requestParams,
 					success: data => {
 						if (data.statusCode == 200) {
