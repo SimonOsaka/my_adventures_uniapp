@@ -29,7 +29,8 @@
                 "permissionPhoneState" : {
                     "request" : "none"
                 },
-                "abiFilters" : [ "armeabi-v7a" ]
+                "abiFilters" : [ "armeabi-v7a" ],
+                "autoSdkPermissions" : true
             },
             "ios" : {
                 "idfa" : false
