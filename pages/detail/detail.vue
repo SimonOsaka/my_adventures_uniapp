@@ -73,7 +73,7 @@
 
 	.content-img {
 		flex: 1;
-		height: 70%;
+		height: 50%;
 	}
 
 	.title-area {

@@ -6,9 +6,14 @@
 					<view class="uni-media-list">
 						<image class="uni-media-list-logo" :src="value.image_url"></image>
 						<view class="uni-media-list-body">
-							<view class="uni-media-list-text-top">{{ value.title }}</view>
-							<view class="uni-media-list-text-bottom">
+							<view class="uni-media-list-text-top">
+								<text>{{ value.title }}</text>
+							</view>
+							<view class="uni-media-list-text-mid">
 								<text>{{ value.type_name }} {{ value.source }}</text>
+							</view>
+							<view class="uni-media-list-text-bottom">
+								<text>来自{{ value.from }}</text>
 								<text>{{ value.datetime }}</text>
 							</view>
 						</view>
@@ -109,6 +114,7 @@
 						datetime: friendlyDate(new Date(adventure.createdAt.replace(/\-/g,
 							'/')).getTime()),
 						source: adventure.authorName,
+						from: adventure.sourceName,
 						type_name: adventure.itemTypeName,
 						link: adventure.link,
 						article_type: 1
@@ -137,9 +143,19 @@
 		overflow: hidden;
 	}
 
+	.uni-media-list-text-mid {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		font-size: 20rpx;
+		color: #CCCCCC;
+	}
+	
 	.uni-media-list-text-bottom {
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
+		font-size: 20rpx;
+		color: #CCCCCC;
 	}
 </style>
