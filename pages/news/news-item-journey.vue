@@ -7,10 +7,10 @@
 					<text>{{ newsItem.title }}</text>
 				</view>
 				<view class="uni-media-list-text-mid">
-					<text>{{ newsItem.type_name }} {{ newsItem.author_name }}</text>
+					<text>{{ newsItem.type_name }} {{ newsItem.from }}</text>
 				</view>
 				<view class="uni-media-list-text-bottom">
-					<text>来自{{ newsItem.from }}</text>
+					<text>{{ newsItem.journey_destiny_name }}</text>
 					<text>{{ newsItem.datetime }}</text>
 				</view>
 			</view>

@@ -6,7 +6,7 @@
 			</view>
 		</view>
 		<view class="article-meta">
-			<text class="article-meta-text article-author">{{banner.source}}</text>
+			<text class="article-meta-text article-author">{{banner.author_name}}</text>
 			<text class="article-meta-text article-text">发表于</text>
 			<text class="article-meta-text article-time">{{banner.datetime}}</text>
 		</view>

@@ -2,23 +2,8 @@
 	<view>
 		<view class="uni-list">
 			<block v-for="(value, index) in listData" :key="index">
-				<view class="uni-list-cell" hover-class="uni-list-cell-hover" @click="goDetail(value)">
-					<view class="uni-media-list">
-						<image class="uni-media-list-logo" :src="value.image_url"></image>
-						<view class="uni-media-list-body">
-							<view class="uni-media-list-text-top">
-								<text>{{ value.title }}</text>
-							</view>
-							<view class="uni-media-list-text-mid">
-								<text>{{ value.type_name }} {{ value.source }}</text>
-							</view>
-							<view class="uni-media-list-text-bottom">
-								<text>来自{{ value.from }}</text>
-								<text>{{ value.datetime }}</text>
-							</view>
-						</view>
-					</view>
-				</view>
+				<journey-item :newsItem="value" v-if="value.item_type === 5"/>
+				<news-item :newsItem="value" v-else/>
 			</block>
 		</view>
 		<uni-load-more :status="status" :icon-size="16" :content-text="contentText" />
@@ -27,6 +12,8 @@
 
 <script>
 	import uniLoadMore from '@/components/uni-load-more.vue';
+	import newsItem from './news-item.vue';
+	import journeyItem from './news-item-journey.vue';
 	import {
 		friendlyDate
 	} from '@/common/util.js';
@@ -34,6 +21,8 @@
 	export default {
 		components: {
 			uniLoadMore,
+			newsItem,
+			journeyItem
 		},
 		data() {
 			return {
@@ -99,11 +88,6 @@
 					}
 				});
 			},
-			goDetail: function(detail) {
-				uni.navigateTo({
-					url: '/pages/detail/detail?query=' + encodeURIComponent(JSON.stringify(detail))
-				});
-			},
 			setTime: function(items) {
 				var newItems = [];
 				items.forEach(adventure => {
@@ -113,10 +97,13 @@
 						image_url: adventure.imageUrl,
 						datetime: friendlyDate(new Date(adventure.createdAt.replace(/\-/g,
 							'/')).getTime()),
-						source: adventure.authorName,
+						author_name: adventure.authorName,
+						source: adventure.source,
 						from: adventure.sourceName,
+						item_type: adventure.itemType,
 						type_name: adventure.itemTypeName,
 						link: adventure.link,
+						journey_destiny_name: adventure.journeyDestinyName,
 						article_type: 1
 					});
 				});
@@ -127,35 +114,5 @@
 </script>
 
 <style>
-	.uni-media-list-logo {
-		width: 180rpx;
-		height: 140rpx;
-	}
 
-	.uni-media-list-body {
-		height: auto;
-		justify-content: space-around;
-	}
-
-	.uni-media-list-text-top {
-		height: 74rpx;
-		font-size: 28rpx;
-		overflow: hidden;
-	}
-
-	.uni-media-list-text-mid {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		font-size: 20rpx;
-		color: #CCCCCC;
-	}
-	
-	.uni-media-list-text-bottom {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		font-size: 20rpx;
-		color: #CCCCCC;
-	}
 </style>
