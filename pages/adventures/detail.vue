@@ -34,7 +34,7 @@
 		onShareAppMessage() {
 			return {
 				title: this.banner.title,
-				path: '/pages/detail/detail?query=' + JSON.stringify(this.banner)
+				path: '/pages/adventures/detail?query=' + JSON.stringify(this.banner)
 			}
 		},
 		onLoad(event) {
@@ -46,7 +46,7 @@
 			}
 
 			uni.setNavigationBarTitle({
-				title: " "
+				title: this.banner.title
 			});
 
 		},

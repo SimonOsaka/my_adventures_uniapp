@@ -378,6 +378,7 @@ radio-group label, checkbox-group label{
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
+	border-bottom: 1rpx solid #eee;
 }
 .uni-list-cell-hover {
 	background-color: #eee;

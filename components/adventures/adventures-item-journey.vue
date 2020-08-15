@@ -1,17 +1,17 @@
 <template>
-	<view class="uni-list-cell" hover-class="uni-list-cell-hover" @click="goDetail">
+	<view class="uni-list-cell" @click="goDetail">
 		<view class="uni-media-list">
-			<image class="uni-media-list-logo" :src="newsItem.image_url"></image>
+			<image class="uni-media-list-logo" :src="dataItem.image_url"></image>
 			<view class="uni-media-list-body">
 				<view class="uni-media-list-text-top">
-					<text>{{ newsItem.title }}</text>
+					<text>{{ dataItem.title }}</text>
 				</view>
 				<view class="uni-media-list-text-mid">
-					<text>{{ newsItem.type_name }} {{ newsItem.author_name }}</text>
+					<text>{{ dataItem.type_name }} {{ dataItem.from }}</text>
 				</view>
 				<view class="uni-media-list-text-bottom">
-					<text>来自{{ newsItem.from }}</text>
-					<text>{{ newsItem.datetime }}</text>
+					<text>{{ dataItem.journey_destiny_name }}</text>
+					<text>{{ dataItem.datetime }}</text>
 				</view>
 			</view>
 		</view>
@@ -21,7 +21,7 @@
 <script>
 	export default {
 		props: {
-			newsItem: {
+			dataItem: {
 				type: Object,
 				default: function(e) {
 					return {}
@@ -31,7 +31,7 @@
 		methods: {
 			goDetail: function() {
 				uni.navigateTo({
-					url: '/pages/detail/detail?query=' + encodeURIComponent(JSON.stringify(this.newsItem))
+					url: '/pages/adventures/detail?query=' + encodeURIComponent(JSON.stringify(this.dataItem))
 				});
 			},
 		}

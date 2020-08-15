@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import App from './App'
+import MescrollUni from "@/components/mescroll-uni/mescroll-uni.vue"
+Vue.component('mescroll-uni', MescrollUni)
 
 Vue.config.productionTip = false
 
