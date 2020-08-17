@@ -2,7 +2,7 @@
     "name" : "我的奇遇记",
     "appid" : "__UNI__410C039",
     "description" : "总是遇到奇怪的事情",
-    "versionName" : "1.0.0",
+    "versionName" : "1.0.3",
     "versionCode" : 100,
     "transformPx" : false,
     "uniStatistics" : {
@@ -28,7 +28,7 @@
                 "permissionPhoneState" : {
                     "request" : "none"
                 },
-                "abiFilters" : [ "armeabi-v7a" ],
+                "abiFilters" : [ "armeabi-v7a", "x86" ],
                 "autoSdkPermissions" : true
             },
             "ios" : {

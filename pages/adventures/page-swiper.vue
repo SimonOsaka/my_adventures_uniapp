@@ -131,6 +131,7 @@
 						type_name: adventure.itemTypeName,
 						link: adventure.link,
 						journey_destiny_name: adventure.journeyDestinyName,
+						script_content: adventure.scriptContent,
 						article_type: 1
 					});
 				});

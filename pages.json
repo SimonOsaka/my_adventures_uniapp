@@ -13,19 +13,18 @@
 		},
 		{
 			"path": "pages/adventures/detail",
-			"style": {
-				// "app-plus": {
-				// 	"titleNView": {
-				// 		"type": "float"
-				// 	}
-				// }
-			}
+			"style": {}
+		},
+		{
+			"path": "pages/adventures/script-detail",
+			"style": {}
 		}
 	],
 	"globalStyle": {
-		"navigationBarTextStyle": "white",
+		"pageOrientation": "portrait",
+		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "我的奇遇记",
-		"navigationBarBackgroundColor": "#2F85FC",
+		"navigationBarBackgroundColor": "#FFFFFF",
 		"backgroundColor": "#FFFFFF",
 		"backgroundColorTop": "#FFFFFF" // iOS APP真机bounce回弹区域默认灰色,需重置为白色
 	}
