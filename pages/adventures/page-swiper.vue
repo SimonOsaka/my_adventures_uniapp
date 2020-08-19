@@ -4,10 +4,9 @@
 	swiper中无法触发mescroll-mixins.js的onPageScroll和onReachBottom方法,只能用mescroll-uni,不能用mescroll-body
 	-->
 	<view>
-		<mescroll-uni ref="mescrollRef" @init="mescrollInit" height="100%" top="64" :down="downOption" @down="downCallback" :up="upOption"
-		 @up="upCallback">
+		<mescroll-uni ref="mescrollRef" @init="mescrollInit" height="100%" top="64" :down="downOption" @down="downCallback"
+		 :up="upOption" @up="upCallback">
 			<!-- 数据列表 -->
-			<!-- <good-list :list="goods"></good-list> -->
 			<adventures-list :list="goods"></adventures-list>
 		</mescroll-uni>
 	</view>
@@ -71,7 +70,9 @@
 				// 这里加载你想下拉刷新的数据, 比如刷新轮播数据
 				// loadSwiper();
 				// 下拉刷新的回调,默认重置上拉加载列表为第一页 (自动执行 page.num=1, 再触发upCallback方法 )
-				this.mescroll.resetUpScroll()
+				setTimeout(() => {
+					this.mescroll.resetUpScroll();
+				}, 150);
 			},
 			/*上拉加载的回调: 其中page.num:当前页 从1开始, page.size:每页数据条数,默认10 */
 			upCallback(page) {
@@ -93,7 +94,7 @@
 			getList(currentPage) {
 				this.requestParams.time = new Date().getTime() + '';
 				this.requestParams.offset = (currentPage - 1) * this.requestParams.limit;
-				this.requestParams.item_id = this.index;
+				this.requestParams.item_id = this.tabs[this.index]['itemId'];
 				uni.request({
 					url: 'https://adventures.jicu.vip/api/adventures',
 					data: this.requestParams,
@@ -101,7 +102,7 @@
 						if (data.statusCode == 200) {
 							let list = this.setData(data.data.adventures);
 							//如果是第一页需手动制空列表
-							if (currentPage == 1) this.goods = []; 
+							if (currentPage == 1) this.goods = [];
 							this.goods = this.goods.concat(list);
 							//联网成功的回调,隐藏下拉刷新和上拉加载的状态;
 							this.mescroll.endSuccess(list.length);
