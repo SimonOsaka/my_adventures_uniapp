@@ -14,6 +14,7 @@
 						appid: plus.runtime.appid,
 						version: plus.runtime.version
 					},
+					sslVerify: false,
 					success: (res) => {
 						console.log('success', res);
 						if (res.statusCode == 200 && res.data.isUpdate) {

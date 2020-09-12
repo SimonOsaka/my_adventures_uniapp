@@ -98,6 +98,7 @@
 				uni.request({
 					url: 'https://adventures.jicu.vip/api/adventures',
 					data: this.requestParams,
+					sslVerify: false,
 					success: data => {
 						if (data.statusCode == 200) {
 							let list = this.setData(data.data.adventures);

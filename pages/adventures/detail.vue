@@ -64,6 +64,7 @@
 			requestPlayList() {
 				uni.request({
 					url: "https://adventures.jicu.vip/api/adventures/playlist/" + this.banner.play_list,
+					sslVerify: false,
 					success: (data) => {
 						if (data.statusCode == 200) {
 							const adventure_list = data.data.adventures;

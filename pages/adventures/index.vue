@@ -33,6 +33,7 @@
 				// 获取tabs
 				uni.request({
 					url: 'https://adventures.jicu.vip/api/adventures/tabs',
+					sslVerify:false,
 					success: res => {
 						if (res.statusCode == 200) {
 							let list = res.data.tabList;

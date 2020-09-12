@@ -88,6 +88,9 @@
                     "xxhdpi" : "unpackage/res/splash/LaunchImage-Android-1080x1882.png"
                 }
             }
+        },
+        "splashscreen" : {
+            "waiting" : false
         }
     },
     "quickapp" : {},

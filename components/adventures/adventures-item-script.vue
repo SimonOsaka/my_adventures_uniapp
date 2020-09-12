@@ -6,8 +6,8 @@
 					<text class="script_content">{{ dataItem.script_content }}</text>
 				</view>
 				<view class="uni-media-list-text-bottom">
-					<text>{{ dataItem.type_name }} {{ dataItem.author_name }}</text>
-					<text>{{ dataItem.datetime }}</text>
+					<text class="name">{{ dataItem.type_name }} {{ dataItem.author_name }}</text>
+					<text class="time">{{ dataItem.datetime }}</text>
 				</view>
 			</view>
 		</view>
@@ -41,7 +41,7 @@
 	}
 
 	.script_content {
-		max-height: 80rpx;
+		max-height: 86rpx;
 		overflow: hidden;
 		white-space: normal;
 		word-break: break-all;
@@ -55,10 +55,12 @@
 		-webkit-line-clamp: 2;
 		/** 显示的行数 **/
 
+		font-size: 38upx;
+		line-height: 44upx;
 	}
 
 	.uni-media-list-text-top {
-		height: 80rpx;
+		height: 100rpx;
 		font-size: 28rpx;
 		overflow: hidden;
 	}
@@ -69,5 +71,13 @@
 		justify-content: space-between;
 		font-size: 20rpx;
 		color: #CCCCCC;
+	}
+
+	.uni-media-list-text-bottom .name {
+		font-size: 28upx;
+	}
+
+	.uni-media-list-text-bottom .time {
+		font-size: 28upx;
 	}
 </style>
