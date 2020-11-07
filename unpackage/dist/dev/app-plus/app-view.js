@@ -133,6 +133,7 @@ if (typeof Promise !== 'undefined' && !Promise.prototype.finally) {
 
   };
 }
+window.__uniConfig = { "window": { "pageOrientation": "portrait", "navigationBarTextStyle": "black", "navigationBarTitleText": "我的奇遇记", "navigationBarBackgroundColor": "#FFFFFF", "backgroundColor": "#FFFFFF", "backgroundColorTop": "#FFFFFF" } };
 if (uni.restoreGlobal) {
   uni.restoreGlobal(weex, plus, setTimeout, clearTimeout, setInterval, clearInterval);
 }
@@ -841,10 +842,12 @@ function applyToTag (styleElement, obj) {
 }
 
 //fixed by xxxxxx
-var UPX_RE = /([+-]?\d+(\.\d+)?)[r|u]px/g
+var UPX_RE = /\b([+-]?\d+(\.\d+)?)[r|u]px\b/g
 var VAR_STATUS_BAR_HEIGHT = /var\(--status-bar-height\)/gi
 var VAR_WINDOW_TOP = /var\(--window-top\)/gi
 var VAR_WINDOW_BOTTOM = /var\(--window-bottom\)/gi
+var VAR_WINDOW_LEFT = /var\(--window-left\)/gi
+var VAR_WINDOW_RIGHT = /var\(--window-right\)/gi
 
 var statusBarHeight = false
 function processCss(css) {
@@ -860,6 +863,8 @@ function processCss(css) {
 		css = css.replace(VAR_STATUS_BAR_HEIGHT, offset.statusBarHeight + 'px')
 			.replace(VAR_WINDOW_TOP, offset.top + 'px')
 			.replace(VAR_WINDOW_BOTTOM, offset.bottom + 'px')
+            .replace(VAR_WINDOW_LEFT, '0px')
+            .replace(VAR_WINDOW_RIGHT, '0px')
 	}
   return css.replace(/\{[\s\S]+?\}/g, function (css) {
     return css.replace(UPX_RE, function (a, b) {
@@ -3517,9 +3522,21 @@ var render = function() {
         "v-uni-view",
         { staticClass: _vm._$g(7, "sc"), attrs: { _i: 7 } },
         [
+          _vm._$g(8, "i")
+            ? _c(
+                "v-uni-view",
+                { staticClass: _vm._$g(8, "sc"), attrs: { _i: 8 } },
+                [
+                  _c("v-uni-text", { attrs: { _i: 9 } }, [
+                    _vm._v("地址：" + _vm._$g(9, "t0-0"))
+                  ])
+                ],
+                1
+              )
+            : _vm._e(),
           _c("img", {
-            staticClass: _vm._$g(8, "sc"),
-            attrs: { src: _vm._$g(8, "a-src"), _i: 8 },
+            staticClass: _vm._$g(10, "sc"),
+            attrs: { src: _vm._$g(10, "a-src"), _i: 10 },
             on: {
               click: function($event) {
                 return _vm.$handleViewEvent($event)
@@ -3529,33 +3546,33 @@ var render = function() {
         ],
         1
       ),
-      _vm._$g(9, "i")
+      _vm._$g(11, "i")
         ? _c(
             "v-uni-view",
-            { staticClass: _vm._$g(9, "sc"), attrs: { _i: 9 } },
+            { staticClass: _vm._$g(11, "sc"), attrs: { _i: 11 } },
             [
               _c(
                 "v-uni-view",
-                { staticClass: _vm._$g(10, "sc"), attrs: { _i: 10 } },
+                { staticClass: _vm._$g(12, "sc"), attrs: { _i: 12 } },
                 [
-                  _c("v-uni-text", { attrs: { _i: 11 } }, [_vm._v("播放列表")]),
+                  _c("v-uni-text", { attrs: { _i: 13 } }, [_vm._v("播放列表")]),
                   _c(
                     "v-uni-text",
-                    { staticClass: _vm._$g(12, "sc"), attrs: { _i: 12 } },
+                    { staticClass: _vm._$g(14, "sc"), attrs: { _i: 14 } },
                     [_vm._v("点击播放")]
                   )
                 ],
                 1
               ),
-              _vm._l(_vm._$g(13, "f"), function(value, index, $20, $30) {
+              _vm._l(_vm._$g(15, "f"), function(value, index, $20, $30) {
                 return [
-                  _vm._$g("14-" + $30, "i")
+                  _vm._$g("16-" + $30, "i")
                     ? _c(
                         "v-uni-view",
                         {
                           key: value["k0"],
-                          staticClass: _vm._$g("14-" + $30, "sc"),
-                          attrs: { _i: "14-" + $30 },
+                          staticClass: _vm._$g("16-" + $30, "sc"),
+                          attrs: { _i: "16-" + $30 },
                           on: {
                             click: function($event) {
                               return _vm.$handleViewEvent($event)
@@ -3563,8 +3580,8 @@ var render = function() {
                           }
                         },
                         [
-                          _c("v-uni-text", { attrs: { _i: "15-" + $30 } }, [
-                            _vm._v(_vm._$g("15-" + $30, "t0-0"))
+                          _c("v-uni-text", { attrs: { _i: "17-" + $30 } }, [
+                            _vm._v(_vm._$g("17-" + $30, "t0-0"))
                           ])
                         ],
                         1
@@ -3576,7 +3593,7 @@ var render = function() {
             2
           )
         : _vm._e(),
-      _c("v-uni-view", { staticClass: _vm._$g(16, "sc"), attrs: { _i: 16 } })
+      _c("v-uni-view", { staticClass: _vm._$g(18, "sc"), attrs: { _i: 18 } })
     ],
     1
   )
@@ -3669,7 +3686,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../../../Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 13);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n.banner {\n\tbackground-color: #fff;\n\tpadding: 30upx 30upx 0px 30upx;\n}\n.content-img {\n\t-webkit-box-flex: 1;\n\t-webkit-flex: 1;\n\t        flex: 1;\n\theight: 50%;\n\twidth: 100%;\n}\n.title-text {\n\tfont-size: 32upx;\n\tfont-weight: bold;\n}\n.article-meta {\n\tpadding: 10upx 30upx 10upx 30upx;\n\tmargin-bottom: 10upx;\n\tbackground-color: #fff;\n\t-webkit-box-orient: horizontal;\n\t-webkit-box-direction: normal;\n\t-webkit-flex-direction: row;\n\t        flex-direction: row;\n\t-webkit-box-align: center;\n\t-webkit-align-items: center;\n\t        align-items: center;\n\t-webkit-box-pack: start;\n\t-webkit-justify-content: flex-start;\n\t        justify-content: flex-start;\n}\n.article-meta-text {\n\tcolor: gray;\n}\n.article-text {\n\tfont-size: 22upx;\n\tmargin: 0 20upx;\n}\n.article-author {\n\tfont-size: 26upx;\n}\n.article-time {\n\tfont-size: 26upx;\n}\n.article-content {\n\tfont-size: 30upx;\n\tpadding: 0 30upx;\n\tbackground-color: #fff;\n\toverflow: hidden;\n\ttext-align: center;\n}\n.article-playlist {\n\tbackground-color: #fff;\n\ttext-align: left;\n\tpadding: 30upx;\n}\n.article-playlist-head {\n\tfont-weight: bold;\n\tborder-bottom-width: 1upx;\n\tborder-bottom-style: solid;\n\tborder-bottom-color: #CCCCCC;\n}\n.article-playlist-click {\n\tfont-size: 20upx;\n\tcolor: #CCCCCC;\n\tmargin-left: 10upx;\n}\n.article-playlist-text {\n\tfont-weight: 30upx;\n\tpadding: 10upx 0;\n\tborder-bottom-width: 1upx;\n\tborder-bottom-style: solid;\n\tborder-bottom-color: #CCCCCC;\n}\n", ""]);
+exports.push([module.i, "\n.banner {\n\tbackground-color: #fff;\n\tpadding: 30upx 30upx 0px 30upx;\n}\n.content-img {\n\t-webkit-box-flex: 1;\n\t-webkit-flex: 1;\n\t        flex: 1;\n\theight: 50%;\n\twidth: 100%;\n}\n.title-text {\n\tfont-size: 32upx;\n\tfont-weight: bold;\n}\n.article-meta {\n\tpadding: 10upx 30upx 10upx 30upx;\n\tmargin-bottom: 10upx;\n\tbackground-color: #fff;\n\t-webkit-box-orient: horizontal;\n\t-webkit-box-direction: normal;\n\t-webkit-flex-direction: row;\n\t        flex-direction: row;\n\t-webkit-box-align: center;\n\t-webkit-align-items: center;\n\t        align-items: center;\n\t-webkit-box-pack: start;\n\t-webkit-justify-content: flex-start;\n\t        justify-content: flex-start;\n}\n.article-meta-text {\n\tcolor: gray;\n}\n.article-text {\n\tfont-size: 22upx;\n\tmargin: 0 20upx;\n}\n.article-author {\n\tfont-size: 26upx;\n}\n.article-time {\n\tfont-size: 26upx;\n}\n.article-content {\n\tfont-size: 30upx;\n\tpadding: 0 30upx;\n\tbackground-color: #fff;\n\toverflow: hidden;\n\ttext-align: center;\n}\n.word-address {\n\tfont-size: 32upx;\n}\n.word-left {\n\ttext-align: left;\n}\n.article-playlist {\n\tbackground-color: #fff;\n\ttext-align: left;\n\tpadding: 30upx;\n}\n.article-playlist-head {\n\tfont-weight: bold;\n\tborder-bottom-width: 1upx;\n\tborder-bottom-style: solid;\n\tborder-bottom-color: #CCCCCC;\n}\n.article-playlist-click {\n\tfont-size: 20upx;\n\tcolor: #CCCCCC;\n\tmargin-left: 10upx;\n}\n.article-playlist-text {\n\tfont-weight: 30upx;\n\tpadding: 10upx 0;\n\tborder-bottom-width: 1upx;\n\tborder-bottom-style: solid;\n\tborder-bottom-color: #CCCCCC;\n}\n", ""]);
 // Exports
 module.exports = exports;
 

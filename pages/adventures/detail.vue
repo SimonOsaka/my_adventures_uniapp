@@ -9,6 +9,9 @@
 			<text class="article-meta-text article-time">{{banner.datetime}}</text>
 		</view>
 		<view class="article-content">
+			<view v-if="banner.item_type === 6" class="word-left word-address">
+				<text>地址：{{ banner.address }}</text>
+			</view>
 			<img class="content-img" :src="banner.image_url" @click="openURL">
 		</view>
 		<view class="article-playlist" v-if="banner.play_list !== '' && collection.length > 0">
@@ -84,6 +87,7 @@
 									journey_destiny_name: adventure.journeyDestinyName,
 									script_content: adventure.scriptContent,
 									play_list: adventure.playList,
+									address: adventure.address,
 									article_type: 1
 								});
 							});
@@ -174,7 +178,15 @@
 		overflow: hidden;
 		text-align: center;
 	}
-
+	
+	.word-address {
+		font-size: 32upx;
+	}
+	
+	.word-left {
+		text-align: left;
+	}
+	
 	.article-playlist {
 		background-color: #fff;
 		text-align: left;

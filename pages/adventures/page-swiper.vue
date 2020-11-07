@@ -135,6 +135,7 @@
 						journey_destiny_name: adventure.journeyDestinyName,
 						script_content: adventure.scriptContent,
 						play_list: adventure.playList,
+						address: adventure.address,
 						article_type: 1
 					});
 				});
