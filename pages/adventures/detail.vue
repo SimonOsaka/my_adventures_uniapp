@@ -13,6 +13,9 @@
 				<text>地址：{{ banner.address }}</text>
 			</view>
 			<img class="content-img" :src="banner.image_url" @click="openURL">
+			<view>
+				<text class="word-left">↑点图片观看</text>
+			</view>
 		</view>
 		<view class="article-playlist" v-if="banner.play_list !== '' && collection.length > 0">
 			<view class="article-playlist-head">
