@@ -4,7 +4,8 @@
 		<me-tabs v-model="tabIndex" :tabs="tabs" :fixed="true" :tab-width="130"></me-tabs>
 		<swiper :style="{height: height}" :current="tabIndex" @change="swiperChange">
 			<swiper-item v-for="(tab,i) in tabs" :key="i">
-				<mescroll-item :i="i" :index="tabIndex" :tabs="tabs"></mescroll-item>
+				<journey-destiny v-if="tab.itemId === 5"></journey-destiny>
+				<mescroll-item v-else :i="i" :index="tabIndex" :tabs="tabs"></mescroll-item>
 			</swiper-item>
 		</swiper>
 	</view>
@@ -12,10 +13,12 @@
 
 <script>
 	import MescrollItem from "./page-swiper.vue";
+	import journeyDestiny from '@/components/adventures/journey-destiny.vue';
 
 	export default {
 		components: {
-			MescrollItem
+			MescrollItem,
+			journeyDestiny
 		},
 		data() {
 			return {
@@ -33,7 +36,7 @@
 				// 获取tabs
 				uni.request({
 					url: 'https://adventures.jicu.vip/api/adventures/tabs',
-					sslVerify:false,
+					sslVerify: false,
 					success: res => {
 						if (res.statusCode == 200) {
 							let list = res.data.tabList;

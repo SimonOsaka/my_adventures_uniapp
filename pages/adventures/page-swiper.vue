@@ -4,7 +4,7 @@
 	swiper中无法触发mescroll-mixins.js的onPageScroll和onReachBottom方法,只能用mescroll-uni,不能用mescroll-body
 	-->
 	<view>
-		<mescroll-uni ref="mescrollRef" @init="mescrollInit" height="100%" top="64" :down="downOption" @down="downCallback"
+		<mescroll-uni ref="mescrollRef" @init="mescrollInit" height="100%" :top="top" :down="downOption" @down="downCallback"
 		 :up="upOption" @up="upCallback">
 			<!-- 数据列表 -->
 			<adventures-list :list="goods"></adventures-list>
@@ -44,7 +44,8 @@
 				requestParams: {
 					limit: 10,
 					offset: 0,
-					item_id: 0
+					item_id: 0,
+					province_key: ''
 				},
 				goods: [] //列表数据
 			}
@@ -62,6 +63,23 @@
 				default () {
 					return []
 				}
+			},
+			province: {// 旅游栏目引用，传入省名拼音
+				type: String,
+				default () {
+					return ''
+				}
+			},
+			top: {
+				type: Number,
+				default() {
+					return 64
+				}
+			}
+		},
+		mounted() {
+			if (this.province !== '') {
+				this.mescroll.triggerDownScroll();
 			}
 		},
 		methods: {
@@ -94,7 +112,12 @@
 			getList(currentPage) {
 				this.requestParams.time = new Date().getTime() + '';
 				this.requestParams.offset = (currentPage - 1) * this.requestParams.limit;
-				this.requestParams.item_id = this.tabs[this.index]['itemId'];
+				if (this.province !== '') {
+					this.requestParams.item_id = 5;
+					this.requestParams.province_key = this.province;
+				} else {
+					this.requestParams.item_id = this.tabs[this.index]['itemId'];
+				}
 				uni.request({
 					url: 'https://adventures.jicu.vip/api/adventures',
 					data: this.requestParams,

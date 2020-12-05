@@ -18,6 +18,10 @@
 		{
 			"path": "pages/adventures/script-detail",
 			"style": {}
+		},
+		{
+			"path": "pages/adventures/journey-destiny-list",
+			"style": {}
 		}
 	],
 	"globalStyle": {
