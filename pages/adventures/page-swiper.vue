@@ -159,6 +159,10 @@
 						script_content: adventure.scriptContent,
 						play_list: adventure.playList,
 						address: adventure.address,
+						retail_shop_name: adventure.shopName,
+						retail_province: adventure.province,
+						retail_city: adventure.city,
+						retail_district: adventure.district,
 						article_type: 1
 					});
 				});

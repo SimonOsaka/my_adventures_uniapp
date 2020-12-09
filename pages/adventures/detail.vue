@@ -8,7 +8,15 @@
 			<text class="article-meta-text article-text">发表于</text>
 			<text class="article-meta-text article-time">{{banner.datetime}}</text>
 		</view>
-		<view class="article-content">
+		<view v-if="banner.item_type === 7" class="article-content">
+			<view class="word-left word-address" style="font-size: 48rpx;">
+				<text>{{ banner.retail_shop_name }}</text>
+			</view>
+			<view class="word-left word-address">
+				<text>地址：{{ banner.retail_province }}{{ banner.retail_city }}{{ banner.retail_district }}{{ banner.address }}</text>
+			</view>
+		</view>
+		<view v-else class="article-content">
 			<view v-if="banner.item_type === 6" class="word-left word-address">
 				<text>地址：{{ banner.address }}</text>
 			</view>
